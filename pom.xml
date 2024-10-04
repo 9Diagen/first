@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>diag.playmine</groupId>
+    <artifactId>first</artifactId>
+    <version>1.0.0</version>
+    <packaging>jar</packaging>
+
+    <name>first</name>
+
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+    </build>
+
+    <properties>
+        <java.version>17</java.version>
+        <!-- Зависимости -->
+        <!-- https://repo.dmulloy2.net/service/rest/repository/browse/public/org/spigotmc/spigot/ -->
+        <!-- https://repo.papermc.io/service/rest/repository/browse/maven-public/io/papermc/paper/paper-api/ -->
+        <spigot.version>1.20.2-R0.1-SNAPSHOT</spigot.version>
+        <!-- https://mvnrepository.com/artifact/it.unimi.dsi/fastutil/ -->
+        <fastutil.version>8.5.12</fastutil.version>
+        <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok/ -->
+        <lombok.version>1.18.30</lombok.version>
+        <!-- https://mvnrepository.com/artifact/org.jetbrains/annotations/ -->
+        <jetbrains-annotations.version>24.1.0</jetbrains-annotations.version>
+        <!-- Стандартные настройки -->
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
+        <maven.compiler.release>${java.version}</maven.compiler.release>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <organization>
+        <name>FoxInBox</name>
+        <url>https://foxinbox.su/</url>
+    </organization>
+
+    <licenses>
+        <license>
+            <name>CC BY-NC-ND 4.0</name>
+            <url>https://files.foxinbox.su/license/LICENSE</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <id>9Diagen</id>
+        </developer>
+    </developers>
+
+    <repositories>
+        <!-- Paper -->
+        <repository>
+            <id>paper-repo</id>
+            <url>https://repo.papermc.io/repository/maven-public/</url>
+        </repository>
+        <!-- Spigot -->
+        <repository>
+            <id>dmulloy2-repo</id>
+            <url>https://repo.dmulloy2.net/repository/public/</url>
+        </repository>
+        <repository>
+            <id>spigotmc-releases</id>
+            <url>https://hub.spigotmc.org/nexus/content/repositories/releases/</url>
+        </repository>
+    </repositories>
+
+    <dependencies>
+        <!-- Ядро Paper -->
+        <dependency>
+            <groupId>io.papermc.paper</groupId>
+            <artifactId>paper-api</artifactId>
+            <version>${spigot.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.spigotmc</groupId>
+            <artifactId>minecraft-server</artifactId>
+            <version>${spigot.version}</version>
+        </dependency>
+        <!-- Функциональные библиотеки -->
+        <!-- Быстрые коллекции -->
+        <dependency>
+            <groupId>it.unimi.dsi</groupId>
+            <artifactId>fastutil</artifactId>
+            <version>${fastutil.version}</version>
+        </dependency>
+        <!-- Процессоры аннотаций -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jetbrains</groupId>
+            <artifactId>annotations</artifactId>
+            <version>${jetbrains-annotations.version}</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+</project>

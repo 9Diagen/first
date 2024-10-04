@@ -1,0 +1,17 @@
+name: first
+version: '1.0.0'
+main: diag.playmine.first.First
+api-version: '1.20'
+
+
+commands:
+  shop:
+    usage: /shop
+  getbalance:
+    usage: /getbalance <nick>
+    aliases:
+      - gb
+  setbalance:
+    usage: /setbalance <nick> <amount>
+    aliases:
+      - sb
