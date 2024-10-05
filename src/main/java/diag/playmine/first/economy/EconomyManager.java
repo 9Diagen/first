@@ -3,6 +3,7 @@ package diag.playmine.first.economy;
 import diag.playmine.first.First;
 import diag.playmine.first.configuration.Configuration;
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import lombok.Getter;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
 

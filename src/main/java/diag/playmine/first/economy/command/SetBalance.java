@@ -1,5 +1,7 @@
 package diag.playmine.first.economy.command;
 
+import diag.playmine.first.First;
+import diag.playmine.first.configuration.ConfigurationHelper;
 import diag.playmine.first.economy.EconomyManager;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
@@ -12,17 +14,7 @@ import java.text.MessageFormat;
 
 public class SetBalance implements CommandExecutor {
 
-    private final EconomyManager manager;
-
-    public SetBalance(
-            @NotNull EconomyManager manager
-    ) {
-        this.manager = manager;
-    }
-
-    private void setBalance(@NotNull String playerName, double amount) {
-        manager.setBalance(playerName, amount);
-    }
+    private final EconomyManager manager = First.getInstance().getEconomyManager();
 
     @Override
     public boolean onCommand(
@@ -38,7 +30,10 @@ public class SetBalance implements CommandExecutor {
 
         int length = args.length;
 
-        if (length == 0 || length > 2) player.sendMessage("Команда введена неверно");
+        if (length == 0 || length > 2) {
+            player.sendMessage(ConfigurationHelper.getWrongInputMessage());
+            return true;
+        }
 
         double amount;
 
@@ -46,24 +41,24 @@ public class SetBalance implements CommandExecutor {
             amount = Double.parseDouble(args[length - 1]);
         }
         catch (Exception ex) {
-            player.sendMessage("Команда введена неверно");
+            player.sendMessage(ConfigurationHelper.getWrongInputMessage());
             return true;
         }
 
         String receiverName = length == 1 ? senderName : args[0];
-        setBalance(receiverName, amount);
+        manager.setBalance(receiverName, amount);
 
         if (!receiverName.equals(senderName)) {
             var receiver = Bukkit.getPlayer(receiverName);
             if (receiver == null) {
-                player.sendMessage(MessageFormat.format("Игрок с ником {0} не найден", receiverName));
+                player.sendMessage(ConfigurationHelper.getPlayerNotFoundMessage(receiverName));
                 return true;
             }
-            player.sendMessage(MessageFormat.format("Вы установили баланс игрока {0} {1}", receiverName, amount));
-            receiver.sendMessage(MessageFormat.format("Игрок {0} установил вам баланс {1}", senderName, amount));
+            player.sendMessage(ConfigurationHelper.setPlayerBalanceMessageSender(receiverName, amount));
+            player.sendMessage(ConfigurationHelper.setPlayerBalanceMessageReceiver(senderName, amount));
         }
         else {
-            player.sendMessage("Ваш баланс: " + amount);
+            player.sendMessage(ConfigurationHelper.getOwnBalanceMessage(player.getName()));
         }
 
         return true;

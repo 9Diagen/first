@@ -1,11 +1,16 @@
 package diag.playmine.first.configuration;
 
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.TextComponent;
+import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
+import java.text.MessageFormat;
+import java.util.Objects;
 import java.util.logging.Level;
 
 public class Configuration {
@@ -14,6 +19,10 @@ public class Configuration {
     public FileConfiguration yamlConfig;
     public File configurationFile;
     private final JavaPlugin plugin;
+
+    public static TextComponent getFormattedConfigString(@NotNull String path, @NotNull FileConfiguration configuration, Object... args) {
+        return LegacyComponentSerializer.legacyAmpersand().deserialize(MessageFormat.format(Objects.requireNonNull(configuration.getString(path)), args));
+    }
 
     public Configuration(@NotNull String fileName, @NotNull JavaPlugin plugin) {
         this.fileName = fileName;

@@ -1,7 +1,9 @@
 package diag.playmine.first.menu;
 
 import diag.playmine.first.First;
+import diag.playmine.first.events.itemInteract.Interactable;
 import diag.playmine.first.menu.button.ButtonBase;
+import diag.playmine.first.menu.keys.Keys;
 import net.kyori.adventure.text.Component;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -14,7 +16,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-public class MenuBase implements Listener {
+public abstract class MenuBase implements Listener, Interactable {
 
     private final Inventory inventory;
 
@@ -25,11 +27,16 @@ public class MenuBase implements Listener {
     }
 
     public MenuBase(int size, @NotNull Component title) {
+        Keys.interactables.add(this);
         inventory = Bukkit.createInventory(null, size, title);
         First.instance.getServer().getPluginManager().registerEvents(this, First.instance);
     }
 
-    public MenuBase(int size, @NotNull Component title, @NotNull List<? extends ButtonBase> buttons) {
+    public MenuBase(
+            int size,
+            @NotNull Component title,
+            @NotNull List<? extends ButtonBase> buttons
+    ) {
         this(size, title);
         this.buttons = buttons;
 

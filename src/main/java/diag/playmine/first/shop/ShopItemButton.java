@@ -3,8 +3,8 @@ package diag.playmine.first.shop;
 import diag.playmine.first.First;
 import diag.playmine.first.menu.button.ButtonBase;
 import net.kyori.adventure.text.Component;
-import org.bukkit.Material;
 import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
@@ -16,12 +16,12 @@ public class ShopItemButton extends ButtonBase {
 
     public ShopItemButton(
             int slot,
-            @NotNull Material material,
+            @NotNull ItemStack item,
             @NotNull String displayName,
             List<Component> lore,
             double price
     ) {
-        super(slot, material, displayName, lore);
+        super(slot, item, displayName, lore);
         this.price = price;
     }
 

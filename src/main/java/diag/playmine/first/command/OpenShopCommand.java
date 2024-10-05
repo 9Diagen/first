@@ -3,6 +3,7 @@ package diag.playmine.first.command;
 import diag.playmine.first.First;
 import diag.playmine.first.menu.MenuBase;
 import diag.playmine.first.menu.button.ButtonBase;
+import diag.playmine.first.shop.ShopMenu;
 import net.kyori.adventure.text.Component;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -32,9 +33,7 @@ public class OpenShopCommand implements CommandExecutor {
             return true;
         }
 
-
-
-
+        new ShopMenu().open(player);
 
         return true;
     }

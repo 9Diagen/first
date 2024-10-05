@@ -1,7 +1,6 @@
 package diag.playmine.first.fearSword;
 
 import diag.playmine.first.First;
-import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerMoveEvent;

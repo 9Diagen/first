@@ -1,13 +1,10 @@
 package diag.playmine.first.events.itemInteract;
 
-import org.bukkit.entity.Player;
+import diag.playmine.first.items.KeyItem;
 import org.bukkit.event.player.PlayerInteractEvent;
-import org.jetbrains.annotations.NotNull;
 
-public interface Interactable {
+public interface Interactable extends KeyItem {
 
-    boolean getSuccess(@NotNull PlayerInteractEvent e);
-
-    void execute(@NotNull Player player);
+    void onRightClick(PlayerInteractEvent e);
 
 }
