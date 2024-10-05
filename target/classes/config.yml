@@ -1,0 +1,10 @@
+messages:
+  balance:
+    get-own-balance: "Ваш баланс: {0}"
+    get-player-balance: "Баланс игрока {0}: {1}"
+    set-own-balance: "Ваш баланс: {0}"
+    set-player-balance-sender: "Вы установили баланс игрока {0} {1}"
+    set-player-balance-receiver: "Игрок {0} установил вам баланс {1}"
+  errors:
+    player-not-found: "Игрок с ником {0} не найден"
+    wrong-input: "&cКоманда введена неверно"
